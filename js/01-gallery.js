@@ -3,19 +3,19 @@ import { galleryItems } from './gallery-items.js';
 const galleryContainer = document.querySelector('.gallery');
 
 function createGalleryBox(items) {
-  return items.map(item => {
+  return items.map(({ preview, original, description }) => {
     const galleryItem = document.createElement('div');
     galleryItem.classList.add('gallery__item');
 
     const galleryLink = document.createElement('a');
     galleryLink.classList.add('gallery__link');
-    galleryLink.href = item.original;
+    galleryLink.href = original;
 
     const galleryImage = document.createElement('img');
     galleryImage.classList.add('gallery__image');
-    galleryImage.src = item.preview;
-    galleryImage.dataset.source = item.original;
-    galleryImage.alt = item.description;
+    galleryImage.src = preview;
+    galleryImage.dataset.source = original;
+    galleryImage.alt = description;
 
     galleryLink.append(galleryImage);
     galleryItem.append(galleryLink);
